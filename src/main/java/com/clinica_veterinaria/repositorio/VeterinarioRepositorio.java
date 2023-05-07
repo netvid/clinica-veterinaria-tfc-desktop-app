@@ -1,0 +1,46 @@
+package com.clinica_veterinaria.repositorio;
+
+import com.clinica_veterinaria.conexion.Conexion;
+import com.clinica_veterinaria.modelo.Veterinario;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class VeterinarioRepositorio {
+
+    public ObservableList<Veterinario> getObservableListOfVeterinarios(String busqueda){
+        ObservableList<Veterinario> veterinarios = FXCollections.observableArrayList();
+        Conexion con = new Conexion();
+        String query = "";
+
+        if(!busqueda.equals("")) query = "SELECT * FROM Veterinarios where vet_dni like '%" + busqueda + "%'";
+        else query = "SELECT * FROM Veterinarios";
+
+        try {
+            ResultSet rs = con.ejecutarConsulta(query);
+
+            while(rs.next()){
+                String dni = rs.getString("vet_dni");
+                String nombre = rs.getString("vet_nombre");
+                String apellidos = rs.getString("vet_apellidos");
+                String sector = rs.getString("vet_sector");
+                Date fechaNac = rs.getDate("vet_fecha_nac");
+
+                Veterinario veterinario = new Veterinario(dni,nombre,apellidos,sector,fechaNac);
+                veterinarios.add(veterinario);
+            }
+
+            con.close();
+            rs.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return veterinarios;
+    }
+}
