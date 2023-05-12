@@ -1,0 +1,83 @@
+.container{
+    -fx-background-color: #fff;
+}
+
+.left-panel{
+    -fx-border-color: #fefefe;
+    -fx-border-width: 5px;
+}
+
+.left-panel__btn{
+    -fx-background-color: none;
+    -fx-background-position: center;
+    -fx-background-size: 32px;
+    -fx-background-repeat: no-repeat;
+    -fx-padding: 5px 25px;
+    -fx-border: none;
+}
+
+#btn-home{
+    -fx-background-image: url('../assets/home_icon.png');
+}
+
+#btn-person{
+    -fx-background-image: url('../assets/person_icon.png');
+}
+
+#btn-pets{
+    -fx-background-image: url('../assets/pet_icon.png');
+}
+
+#btn-cites{
+    -fx-background-image: url('../assets/cite_icon.png');
+}
+
+
+.title{
+    -fx-font-size: 32px;
+    -fx-text-fill: #11245C;
+    -fx-font-weight: bold;
+}
+
+
+.search-container{
+    -fx-background-color: #FCFBFC;
+}
+
+.search-input{
+    -fx-pref-width: 350px;
+    -fx-padding: 10px 5px;
+    -fx-border-width: 0;
+}
+
+.btn-add{
+    -fx-background-color: #2CB151;
+    -fx-text-fill: #fff;
+    -fx-padding: 10px 5px;
+    -fx-pref-width: 75px;
+}
+
+
+.table-view{
+    -fx-border-color: #fff;
+}
+
+.table-view:focused{
+    -fx-border-color: #fff;
+
+}
+
+.table-view .column-header{
+    -fx-background-color: #fff;
+    -fx-font-weight: 900;
+}
+
+.table-view .column-header .label{
+    -fx-font-size: 15px;
+}
+
+.table-view .table-cell .label{
+    -fx-text-align: center;
+}
+
+
