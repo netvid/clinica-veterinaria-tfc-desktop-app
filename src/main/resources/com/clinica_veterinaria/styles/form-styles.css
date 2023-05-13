@@ -1,0 +1,90 @@
+.container{
+    -fx-background-color: #fff;
+}
+
+.title{
+    -fx-text-fill: #11245C;
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+}
+.input-label{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+
+.input{
+    -fx-font-size: 14px;
+    -fx-background-color: #fff;
+    -fx-border-radius: 3px;
+    -fx-border-width: 0.8px;
+    -fx-border-color: #EBEBEB;
+    -fx-padding: 10px 10px;
+}
+
+.date-picker .arrow-button{
+    -fx-background-color: #fff;
+    -fx-border-color: #EBEBEB;
+    -fx-padding: 0 15px;
+}
+
+.date-picker .arrow-button:hover{
+    -fx-cursor: hand;
+}
+
+
+.date-picker > .text-field{
+    -fx-background-color: #fff;
+    -fx-border-color: #EBEBEB;
+    -fx-padding: 10px 10px;
+    -fx-border: 0.8px;
+}
+
+.date-picker .cell{
+    -fx-border-color: #fff;
+}
+
+
+.date-picker-popup .month-year-pane{
+    -fx-background-color: #11245C;
+}
+
+.date-picker-popup .month-year-pane .label{
+    -fx-text-fill: #fff;
+}
+
+.date-picker-popup .spinner .button .left-arrow, .date-picker-popup .spinner .button .right-arrow{
+    -fx-background-color: white;
+    -fx-text-fill: #fff;
+}
+
+
+
+.button{
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 15px;
+}
+
+.button:hover{
+    -fx-cursor: hand;
+}
+
+
+#btn-cancel{
+    -fx-background-color: #DB3D47;
+}
+
+#btn-cancel:hover{
+    -fx-background-color: #da343f;
+}
+
+#btn-add{
+    -fx-background-color: #2CB151;
+}
+
+#btn-add:hover{
+    -fx-background-color: #20b349;
+
+}

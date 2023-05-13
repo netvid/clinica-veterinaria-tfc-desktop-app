@@ -1,10 +1,13 @@
+/* ===================== CONTAINER =====================*/
 .container{
     -fx-background-color: #fff;
 }
 
+
+/* ===================== LEFT PANEl =====================*/
 .left-panel{
-    -fx-border-color: #fefefe;
-    -fx-border-width: 5px;
+    -fx-border-color: #f1f1f1;
+    -fx-border-width:  0 1px 0 0;
 }
 
 .left-panel__btn{
@@ -12,8 +15,14 @@
     -fx-background-position: center;
     -fx-background-size: 32px;
     -fx-background-repeat: no-repeat;
-    -fx-padding: 5px 25px;
+    -fx-padding: 10px 25px;
     -fx-border: none;
+}
+
+.left-panel__btn:hover{
+    -fx-cursor: hand;
+    -fx-background-size: 34px;
+
 }
 
 #btn-home{
@@ -33,8 +42,9 @@
 }
 
 
+/* ===================== RIGHT PANEL =====================*/
 .title{
-    -fx-font-size: 32px;
+    -fx-font-size: 38px;
     -fx-text-fill: #11245C;
     -fx-font-weight: bold;
 }
@@ -45,39 +55,90 @@
 }
 
 .search-input{
+    -fx-font-size: 16px;
     -fx-pref-width: 350px;
-    -fx-padding: 10px 5px;
+    -fx-padding: 10px 40px;
     -fx-border-width: 0;
+    -fx-border-color: #fff;
+    -fx-background-color: #fff;
+    -fx-background-image: url('../assets/search_icon.png');
+    -fx-background-size: 24px;
+    -fx-background-position: 10px;
+    -fx-background-repeat: no-repeat;
 }
 
 .btn-add{
     -fx-background-color: #2CB151;
     -fx-text-fill: #fff;
+    -fx-font-weight: bold;
     -fx-padding: 10px 5px;
     -fx-pref-width: 75px;
 }
 
+.btn-add:hover{
+    -fx-background-color: #3fb360;
+    -fx-cursor: hand;
+}
 
+
+/* ===================== TABLE =====================*/
 .table-view{
+    -fx-background-color: transparent;
     -fx-border-color: #fff;
+    -fx-text-fill: #001;
+    -fx-font-size: 15px;
+}
+
+.table-view .table-column{
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER;
 }
 
 .table-view:focused{
-    -fx-border-color: #fff;
-
+    -fx-border-style: none;
 }
 
 .table-view .column-header{
     -fx-background-color: #fff;
     -fx-font-weight: 900;
+    -fx-border-style: none;
 }
 
 .table-view .column-header .label{
     -fx-font-size: 15px;
 }
 
-.table-view .table-cell .label{
-    -fx-text-align: center;
+.table-view .table-row{
+    -fx-border-style: solid;
+    -fx-border-color: #000;
+    -fx-border-insets: 5px 0px 5px 0px;
 }
+
+.table-view .table-cell{
+    -fx-border-color: #F8F8F8;
+    -fx-border-width: 0.8px 0px 0.8px 0px;
+    -fx-padding: 15px 0;
+    -fx-text-fill: #000;
+}
+
+
+.table-view .table-row-cell{
+    -fx-background-color: #fff;
+}
+
+.table-view .table-row-cell:hover{
+    -fx-background-color: #eff2fc;
+}
+
+.table-view .table-row-cell:selected{
+    -fx-background-color: #e2e8f7;
+}
+
+
+
+
+
+
+
 
 
