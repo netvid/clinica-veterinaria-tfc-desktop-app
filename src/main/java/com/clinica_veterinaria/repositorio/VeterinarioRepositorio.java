@@ -2,6 +2,7 @@ package com.clinica_veterinaria.repositorio;
 
 import com.clinica_veterinaria.conexion.Conexion;
 import com.clinica_veterinaria.modelo.Veterinario;
+import com.clinica_veterinaria.utiles.MisAlertas;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VeterinarioRepositorio {
+    private MisAlertas alertas = new MisAlertas();
 
     public ObservableList<Veterinario> getObservableListOfVeterinarios(String busqueda){
         ObservableList<Veterinario> veterinarios = FXCollections.observableArrayList();
@@ -38,7 +40,7 @@ public class VeterinarioRepositorio {
             rs.close();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            alertas.crearAlerta("Error",e.toString(),"error");
         }
 
         return veterinarios;
@@ -54,25 +56,16 @@ public class VeterinarioRepositorio {
 
         Conexion con = new Conexion();
 
-        try {
-            con.ejecutarActualizacion(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        con.ejecutarActualizacion(query);
         con.close();
+
     }
 
     public void eliminarVeterinario(Veterinario veterinario){
         String query = "DELETE FROM VETERINARIOS where vet_dni = '" + veterinario.getDni() + "';";
         Conexion con = new Conexion();
 
-        try {
-            con.ejecutarActualizacion(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
+        con.ejecutarActualizacion(query);
         con.close();
     }
 
@@ -85,12 +78,8 @@ public class VeterinarioRepositorio {
                 "vet_sector = " + "'" + veterinario.getSector() + "'" + " where vet_dni = " +  "'" + veterinario.getDni() + "'";
 
         Conexion con = new Conexion();
-        try {
-            con.ejecutarActualizacion(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
+        con.ejecutarActualizacion(query);
         con.close();
     }
 }

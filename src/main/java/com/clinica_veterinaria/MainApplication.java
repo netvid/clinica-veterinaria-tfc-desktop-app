@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +20,7 @@ public class MainApplication extends Application {
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.show();
+        GridPane grid;
     }
 
     public static void main(String[] args) {

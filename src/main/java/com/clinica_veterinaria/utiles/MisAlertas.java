@@ -18,5 +18,8 @@ public class MisAlertas {
                 alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 break;
         }
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(header);
+        alerta.showAndWait();
     }
 }
