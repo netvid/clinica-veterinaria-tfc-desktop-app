@@ -1,6 +1,6 @@
 package com.clinica_veterinaria.modelo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Veterinario {
     private String dni;

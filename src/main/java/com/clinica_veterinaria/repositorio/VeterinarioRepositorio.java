@@ -63,10 +63,28 @@ public class VeterinarioRepositorio {
         con.close();
     }
 
-    public void eliminarUsuario(Veterinario veterinario){
+    public void eliminarVeterinario(Veterinario veterinario){
         String query = "DELETE FROM VETERINARIOS where vet_dni = '" + veterinario.getDni() + "';";
         Conexion con = new Conexion();
 
+        try {
+            con.ejecutarActualizacion(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        con.close();
+    }
+
+    public void actualizarVeterinario(Veterinario veterinario){
+        String query = "UPDATE Veterinarios " +
+                "SET vet_dni = " + "'" + veterinario.getDni() + "'" + "," +
+                "vet_nombre = " + "'" + veterinario.getNombre() + "'" + "," +
+                "vet_apellidos =  " + "'" + veterinario.getApellidos() + "'" + "," +
+                "vet_fecha_nac = " + "'" + veterinario.getFechaNac() + "'" + "," +
+                "vet_sector = " + "'" + veterinario.getSector() + "'" + " where vet_dni = " +  "'" + veterinario.getDni() + "'";
+
+        Conexion con = new Conexion();
         try {
             con.ejecutarActualizacion(query);
         } catch (SQLException e) {

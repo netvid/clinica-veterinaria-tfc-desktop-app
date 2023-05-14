@@ -14,13 +14,19 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class AgregarVeterinariosControlador implements Initializable {
 
     private VeterinarioRepositorio repositorio = new VeterinarioRepositorio();
-    private String[] sectores = new String[]{"Odontologia","Vacunacion"};
+    private String[] sectores = new String[]{"Odontologia","Vacunacion","Esterilizacion","Desparasitacion","Identificacion"};
+
+    private String modo = "";
+
+    private Veterinario veterinarioEditar;
 
     @FXML
     TextField textFieldDni;
@@ -43,6 +49,10 @@ public class AgregarVeterinariosControlador implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBox;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.myChoiceBox.getItems().addAll(sectores);
+    }
 
     @FXML
     public void onClickAgregar() {
@@ -50,13 +60,17 @@ public class AgregarVeterinariosControlador implements Initializable {
         String nombre = textFieldNombre.getText();
         String apellidos = textFieldApellidos.getText();
         String sector = myChoiceBox.getValue();
-
         LocalDate localDate = textFieldFechaNac.getValue();
         Date fecha = Date.valueOf(localDate);
+        Veterinario veterinario = new Veterinario(dni,nombre,apellidos,sector,fecha);
 
-        Veterinario veterinarioNuevo = new Veterinario(dni,nombre,apellidos,sector,fecha);
-        repositorio.insertarVeterinario(veterinarioNuevo);
-
+        switch(modo){
+            case "editar":
+                repositorio.actualizarVeterinario(veterinario);
+                break;
+            default:
+                repositorio.insertarVeterinario(veterinario);
+        }
         cerrarVentana(btnAgregar);
     }
 
@@ -70,9 +84,35 @@ public class AgregarVeterinariosControlador implements Initializable {
         escenarioActual.close();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.myChoiceBox.getItems().addAll(sectores);
+    /**
+     * Se asignan como valores de las entradas de texto TextField los valoren de un Objeto Veterinario.
+     */
+    public void iniciarAtributos(){
+        switch(modo){
+            case "editar":
+                this.textFieldDni.setText(veterinarioEditar.getDni());
+                this.textFieldNombre.setText(veterinarioEditar.getNombre());
+                this.textFieldApellidos.setText(veterinarioEditar.getApellidos());
+                this.myChoiceBox.setValue(veterinarioEditar.getSector());
+                Date fechaNac = veterinarioEditar.getFechaNac();
 
+                // Convertir una fecha de tipo date a local date.
+                LocalDate localDate = Instant.ofEpochMilli(fechaNac.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+                this.textFieldFechaNac.setValue(localDate);
+                break;
+        }
+    }
+
+    /**
+     * En funcion de la cadena abre una ventana para insertar o actualizar un veterinario.
+     * @param modo
+     */
+    public void setModo(String modo){
+        this.modo = modo;
+    }
+
+
+    public void setVeterinarioEditar(Veterinario veterinarioEditar){
+        this.veterinarioEditar = veterinarioEditar;
     }
 }

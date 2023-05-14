@@ -77,27 +77,62 @@ public class VeterinarioControlador implements Initializable {
     }
 
 
-    @FXML
-    public void onActionAgregarVeterinario() throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("agregar-veterinarios.fxml"));
+    public void abrirVentana(String titulo, String ventana, String modoAbrir) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("vista/" + ventana + ".fxml"));
         Scene scene = new Scene(loader.load());
         Stage stage = new Stage();
+
+        stage.setTitle(titulo);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
 
-        stage.showAndWait();
+        switch(modoAbrir){
+            case "show":
+                stage.show();
+                break;
+            case "showAndWait":
+                stage.showAndWait();
+                break;
+        }
+        cargarVeterinarios();
+    }
 
-        // Refrescar la tabla de veterinarios al cerrar la aplicacion.
+    public void abrirFormularioEditar(String ventana, Veterinario veterinarioSeleccionado) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("vista/" + ventana + ".fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        AgregarVeterinariosControlador controlador = loader.getController();
+        controlador.setModo("editar");
+        controlador.setVeterinarioEditar(veterinarioSeleccionado);
+        controlador.iniciarAtributos();
+
+        stage.showAndWait();
         cargarVeterinarios();
     }
 
 
     @FXML
+    public void onActionAgregarVeterinario() throws IOException {
+        abrirVentana("","agregar-veterinarios","showAndWait");
+   }
+
+
+    @FXML
     public void onContextMenuEliminar(){
         Veterinario veterinarioSeleccionado = this.tbVeterinarios.getSelectionModel().getSelectedItem();
-        this.repositorio.eliminarUsuario(veterinarioSeleccionado);
+        this.repositorio.eliminarVeterinario(veterinarioSeleccionado);
 
         cargarVeterinarios();
+    }
+
+    @FXML
+    public void onContextMenuEditar() throws IOException {
+        Veterinario veterinarioSeleccionado = this.tbVeterinarios.getSelectionModel().getSelectedItem();
+        abrirFormularioEditar("agregar-veterinarios",veterinarioSeleccionado);
     }
 
 
