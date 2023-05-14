@@ -22,6 +22,15 @@
     -fx-padding: 10px 10px;
 }
 
+
+.choiceBox{
+    -fx-background-color: #fff;
+    -fx-border-color: #EBEBEB;
+    -fx-border-radius: 5px;
+
+
+}
+
 .date-picker .arrow-button{
     -fx-background-color: #fff;
     -fx-border-color: #EBEBEB;

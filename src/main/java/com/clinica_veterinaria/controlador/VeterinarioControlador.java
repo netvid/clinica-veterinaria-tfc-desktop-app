@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 public class VeterinarioControlador implements Initializable {
 
     private VeterinarioRepositorio repositorio = new VeterinarioRepositorio();
+    private String[] sectores = new String[]{"Odontologia","Desparasitacion"};
 
     // ================== ATRIBUTOS ==================
     @FXML
@@ -43,7 +45,6 @@ public class VeterinarioControlador implements Initializable {
     @FXML
     private TableColumn<Veterinario, Date> colFechaNac;
 
-
     // ================== COMPONENTES ==================
 
     @FXML
@@ -60,6 +61,10 @@ public class VeterinarioControlador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         inicializarVeterinarios();
+        cargarVeterinarios();
+    }
+
+    public void cargarVeterinarios(){
         this.tbVeterinarios.setItems(repositorio.getObservableListOfVeterinarios(""));
     }
 
@@ -79,7 +84,20 @@ public class VeterinarioControlador implements Initializable {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
+
         stage.showAndWait();
+
+        // Refrescar la tabla de veterinarios al cerrar la aplicacion.
+        cargarVeterinarios();
+    }
+
+
+    @FXML
+    public void onContextMenuEliminar(){
+        Veterinario veterinarioSeleccionado = this.tbVeterinarios.getSelectionModel().getSelectedItem();
+        this.repositorio.eliminarUsuario(veterinarioSeleccionado);
+
+        cargarVeterinarios();
     }
 
 

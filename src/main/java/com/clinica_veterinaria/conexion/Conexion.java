@@ -33,6 +33,13 @@ public class Conexion {
         return statement.executeQuery(query);
     }
 
+    public boolean ejecutarActualizacion(String query) throws SQLException {
+        Statement statement  = con.createStatement();
+        boolean result = statement.executeUpdate(query) > 0;
+
+        return result;
+    }
+
 
 
 

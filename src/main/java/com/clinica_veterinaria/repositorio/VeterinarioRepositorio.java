@@ -43,4 +43,36 @@ public class VeterinarioRepositorio {
 
         return veterinarios;
     }
+
+    public void insertarVeterinario(Veterinario veterinario){
+        String query = "INSERT INTO VETERINARIOS values(" +
+                "'" + veterinario.getDni() + "'"  + ","  +
+                "'" + veterinario.getNombre() + "'" + "," +
+                "'" + veterinario.getApellidos() + "'" + "," +
+                "'" + veterinario.getFechaNac() + "'" + "," +
+                "'" + veterinario.getSector() + "'" + ");";
+
+        Conexion con = new Conexion();
+
+        try {
+            con.ejecutarActualizacion(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        con.close();
+    }
+
+    public void eliminarUsuario(Veterinario veterinario){
+        String query = "DELETE FROM VETERINARIOS where vet_dni = '" + veterinario.getDni() + "';";
+        Conexion con = new Conexion();
+
+        try {
+            con.ejecutarActualizacion(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        con.close();
+    }
 }
