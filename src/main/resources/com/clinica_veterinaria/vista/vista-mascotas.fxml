@@ -24,13 +24,13 @@
       <RowConstraints maxHeight="571.0" minHeight="10.0" prefHeight="571.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TableView fx:id="tbVeterinarios" prefHeight="556.0" prefWidth="931.0" GridPane.rowIndex="2">
+      <TableView fx:id="tbMascotas" prefHeight="556.0" prefWidth="930.0" GridPane.rowIndex="2">
          <columns>
-            <TableColumn fx:id="colDni" prefWidth="218.0" text="Chip" />
+            <TableColumn fx:id="colChip" prefWidth="218.0" text="Chip" />
             <TableColumn fx:id="colNombre" prefWidth="205.0" text="Nombre" />
-            <TableColumn fx:id="colApellidos" prefWidth="224.0" text="Tipo" />
-            <TableColumn fx:id="colFechaNac" prefWidth="287.0" text="Raza" />
-            <TableColumn fx:id="colFechaNac1" prefWidth="200.0" text="Dni Dueno" />
+            <TableColumn fx:id="colTipo" prefWidth="224.0" text="Tipo" />
+            <TableColumn fx:id="colRaza" prefWidth="287.0" text="Raza" />
+            <TableColumn fx:id="colDniCliente" prefWidth="198.0" text="Dni Dueno" />
          </columns>
          <GridPane.margin>
             <Insets top="15.0" />
@@ -52,7 +52,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1116.0" styleClass="search-container" GridPane.rowIndex="1">
          <children>
             <TextField fx:id="txtFieldSearch" onKeyReleased="#onKeyReleasedSearch" promptText="Buscar por Id" styleClass="search-input" />
-            <Button mnemonicParsing="false" onAction="#onActionAgregarClientes" styleClass="btn-add" text="Agregar">
+            <Button mnemonicParsing="false" onAction="#onActionAgregarMascotas" styleClass="btn-add" text="Agregar">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>

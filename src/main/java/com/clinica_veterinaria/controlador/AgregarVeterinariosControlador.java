@@ -1,7 +1,9 @@
 package com.clinica_veterinaria.controlador;
 
+import com.clinica_veterinaria.interfaces.IClinicaForm;
 import com.clinica_veterinaria.modelo.Veterinario;
 import com.clinica_veterinaria.repositorio.VeterinarioRepositorio;
+import com.clinica_veterinaria.utiles.Utiles;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -19,14 +21,14 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 
-public class AgregarVeterinariosControlador implements Initializable {
+public class AgregarVeterinariosControlador implements Initializable, IClinicaForm<Veterinario> {
 
     private VeterinarioRepositorio repositorio = new VeterinarioRepositorio();
+    private Utiles utiles = new Utiles();
     private String[] sectores = new String[]{"Odontologia","Vacunacion","Esterilizacion","Desparasitacion","Identificacion"};
 
     private String modo = "";
 
-    private Veterinario veterinarioEditar;
 
     @FXML
     TextField textFieldDni;
@@ -66,39 +68,35 @@ public class AgregarVeterinariosControlador implements Initializable {
 
         switch(modo){
             case "editar":
-                repositorio.actualizarVeterinario(veterinario);
+                repositorio.actualizar(veterinario);
                 break;
             default:
-                repositorio.insertarVeterinario(veterinario);
+                repositorio.create(veterinario);
         }
-        cerrarVentana(btnAgregar);
+
+        this.utiles.cerrarVentanaPorBoton(btnAgregar);
     }
 
     @FXML
     public void onClickCancelar(){
-        cerrarVentana(btnCancelar);
+        this.utiles.cerrarVentanaPorBoton(btnCancelar);
     }
 
-    public void cerrarVentana(Button btn){
-        Stage escenarioActual = (Stage) btn.getScene().getWindow();
-        escenarioActual.close();
-    }
 
     /**
      * Se asignan como valores de las entradas de texto TextField los valoren de un Objeto Veterinario.
      */
-    public void iniciarAtributos(){
+    @Override
+    public void iniciarAtributos(Veterinario veterinario){
         switch(modo){
             case "editar":
-                this.textFieldDni.setText(veterinarioEditar.getDni());
-                this.textFieldNombre.setText(veterinarioEditar.getNombre());
-                this.textFieldApellidos.setText(veterinarioEditar.getApellidos());
-                this.myChoiceBox.setValue(veterinarioEditar.getSector());
-                Date fechaNac = veterinarioEditar.getFechaNac();
+                this.textFieldDni.setText(veterinario.getDni());
+                this.textFieldNombre.setText(veterinario.getNombre());
+                this.textFieldApellidos.setText(veterinario.getApellidos());
+                this.myChoiceBox.setValue(veterinario.getSector());
+                Date fechaNac = veterinario.getFechaNac();
 
-                // Convertir una fecha de tipo date a local date.
-                LocalDate localDate = Instant.ofEpochMilli(fechaNac.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-                this.textFieldFechaNac.setValue(localDate);
+                this.textFieldFechaNac.setValue(this.utiles.toLocalDate(fechaNac));
                 break;
         }
     }
@@ -111,8 +109,4 @@ public class AgregarVeterinariosControlador implements Initializable {
         this.modo = modo;
     }
 
-
-    public void setVeterinarioEditar(Veterinario veterinarioEditar){
-        this.veterinarioEditar = veterinarioEditar;
-    }
 }

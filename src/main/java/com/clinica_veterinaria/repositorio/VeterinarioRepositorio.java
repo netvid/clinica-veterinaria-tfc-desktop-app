@@ -1,6 +1,7 @@
 package com.clinica_veterinaria.repositorio;
 
 import com.clinica_veterinaria.conexion.Conexion;
+import com.clinica_veterinaria.interfaces.IDao;
 import com.clinica_veterinaria.modelo.Veterinario;
 import com.clinica_veterinaria.utiles.MisAlertas;
 import javafx.beans.Observable;
@@ -11,10 +12,10 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class VeterinarioRepositorio {
+public class VeterinarioRepositorio implements IDao<Veterinario,String> {
     private MisAlertas alertas = new MisAlertas();
 
-    public ObservableList<Veterinario> getObservableListOfVeterinarios(String busqueda){
+    public ObservableList<Veterinario> obtenerTodos(String busqueda){
         ObservableList<Veterinario> veterinarios = FXCollections.observableArrayList();
         Conexion con = new Conexion();
         String query = "";
@@ -46,7 +47,7 @@ public class VeterinarioRepositorio {
         return veterinarios;
     }
 
-    public void insertarVeterinario(Veterinario veterinario){
+    public void create(Veterinario veterinario){
         String query = "INSERT INTO VETERINARIOS values(" +
                 "'" + veterinario.getDni() + "'"  + ","  +
                 "'" + veterinario.getNombre() + "'" + "," +
@@ -61,15 +62,15 @@ public class VeterinarioRepositorio {
 
     }
 
-    public void eliminarVeterinario(Veterinario veterinario){
-        String query = "DELETE FROM VETERINARIOS where vet_dni = '" + veterinario.getDni() + "';";
+    public void borrar(String dni){
+        String query = "DELETE FROM VETERINARIOS where vet_dni = '" + dni + "';";
         Conexion con = new Conexion();
 
         con.ejecutarActualizacion(query);
         con.close();
     }
 
-    public void actualizarVeterinario(Veterinario veterinario){
+    public void actualizar(Veterinario veterinario){
         String query = "UPDATE Veterinarios " +
                 "SET vet_dni = " + "'" + veterinario.getDni() + "'" + "," +
                 "vet_nombre = " + "'" + veterinario.getNombre() + "'" + "," +
