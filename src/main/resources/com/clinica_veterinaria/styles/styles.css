@@ -41,6 +41,10 @@
     -fx-background-image: url('../assets/cite_icon.png');
 }
 
+#btn-veterinarios{
+    -fx-background-image: url('../assets/veterinarian_icon.png');
+}
+
 
 /* ===================== RIGHT PANEL =====================*/
 .title{

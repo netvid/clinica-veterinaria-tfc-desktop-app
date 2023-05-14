@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" styleClass="container" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.clinica_veterinaria.controlador.DashboardControlador">
+   <children>
+      <BorderPane fx:id="myBorderPane" prefHeight="800.0" prefWidth="1280.0">
+         <left>
+            <VBox alignment="CENTER" prefHeight="800.0" prefWidth="94.0" styleClass="left-panel" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="btn-home" mnemonicParsing="false" styleClass="left-panel__btn" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="100.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="btn-veterinarios" mnemonicParsing="false" onAction="#onClickVerVeterinarios" styleClass="left-panel__btn">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button id="btn-pets" mnemonicParsing="false" onAction="#onClickVerMascotas" styleClass="left-panel__btn" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button id="btn-person" alignment="CENTER" mnemonicParsing="false" onAction="#onClickVerClientes" styleClass="left-panel__btn" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button id="btn-cites" mnemonicParsing="false" onAction="#onClickVerCitas" styleClass="left-panel__btn" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="200.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
