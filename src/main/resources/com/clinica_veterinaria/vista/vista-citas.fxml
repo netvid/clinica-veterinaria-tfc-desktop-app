@@ -24,13 +24,13 @@
       <RowConstraints maxHeight="571.0" minHeight="10.0" prefHeight="571.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TableView fx:id="tbVeterinarios" prefHeight="556.0" prefWidth="931.0" GridPane.rowIndex="2">
+      <TableView fx:id="tbCitas" prefHeight="556.0" prefWidth="931.0" GridPane.rowIndex="2">
          <columns>
-            <TableColumn fx:id="colDni" prefWidth="187.0" text="Id" />
-            <TableColumn fx:id="colNombre" prefWidth="184.0" text="Fecha" />
-            <TableColumn fx:id="colApellidos" prefWidth="249.0" text="Dni Cliente" />
-            <TableColumn fx:id="colFechaNac" prefWidth="223.0" text="Dni veterinario" />
-            <TableColumn fx:id="colFechaNac1" prefWidth="349.0" text="Chip mascota" />
+            <TableColumn fx:id="colId" prefWidth="187.0" text="Id" />
+            <TableColumn fx:id="colFecha" prefWidth="184.0" text="Fecha" />
+            <TableColumn fx:id="colDniCliente" prefWidth="249.0" text="Dni Cliente" />
+            <TableColumn fx:id="colDniVeterinario" prefWidth="223.0" text="Dni veterinario" />
+            <TableColumn fx:id="colChipMascota" prefWidth="349.0" text="Chip mascota" />
          </columns>
          <GridPane.margin>
             <Insets top="15.0" />
@@ -52,7 +52,7 @@
       <HBox alignment="CENTER_LEFT" prefHeight="160.0" prefWidth="1116.0" styleClass="search-container" GridPane.rowIndex="1">
          <children>
             <TextField fx:id="txtFieldSearch" onKeyReleased="#onKeyReleasedSearch" promptText="Buscar por Id" styleClass="search-input" />
-            <Button mnemonicParsing="false" onAction="#onActionAgregarClientes" styleClass="btn-add" text="Agregar">
+            <Button mnemonicParsing="false" onAction="#onActionAgregarCitas" styleClass="btn-add" text="Agregar">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
