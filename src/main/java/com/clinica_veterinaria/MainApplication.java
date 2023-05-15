@@ -20,7 +20,6 @@ public class MainApplication extends Application {
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.show();
-        GridPane grid;
     }
 
     public static void main(String[] args) {

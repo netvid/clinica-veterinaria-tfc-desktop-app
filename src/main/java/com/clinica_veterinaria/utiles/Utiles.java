@@ -3,6 +3,7 @@ package com.clinica_veterinaria.utiles;
 import com.clinica_veterinaria.MainApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,7 +24,7 @@ public class Utiles {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
         }
 
         Stage stage = new Stage();

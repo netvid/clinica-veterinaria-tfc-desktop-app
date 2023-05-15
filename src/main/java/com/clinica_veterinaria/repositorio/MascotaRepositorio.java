@@ -6,6 +6,7 @@ import com.clinica_veterinaria.modelo.Mascota;
 import com.clinica_veterinaria.utiles.MisAlertas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,7 +54,7 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
             rs.close();
             con.close();
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
         }
 
         return mascotas;
