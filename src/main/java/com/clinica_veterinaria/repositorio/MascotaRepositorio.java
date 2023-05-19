@@ -78,6 +78,7 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
         String query = "DELETE FROM Mascotas where masc_chip = '" + id + "'";
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
+        con.close();
     }
 
 

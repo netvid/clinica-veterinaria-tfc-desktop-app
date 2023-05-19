@@ -28,16 +28,10 @@
       </HBox>
       <VBox alignment="CENTER" prefHeight="346.0" prefWidth="500.0" GridPane.rowIndex="1">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Label styleClass="input-label" text="Id" />
-                  <TextField fx:id="textFieldDni" promptText="1" styleClass="input" />
-               </children>
-            </VBox>
             <VBox prefHeight="200.0" prefWidth="400.0">
                <children>
                   <Label styleClass="input-label" text="Fecha " />
-                  <DatePicker fx:id="textFieldFechaNac" prefHeight="25.0" prefWidth="412.0" promptText="dd/mm/YYYY" />
+                  <DatePicker fx:id="datePickerFecha" prefHeight="25.0" prefWidth="412.0" promptText="yyyy-mm-dd" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -46,25 +40,25 @@
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label styleClass="input-label" text="Hora" />
-                  <TextField fx:id="textFieldNombre" promptText="Jesus" styleClass="input" />
+                  <TextField fx:id="textFieldHora" promptText="HH:mm" styleClass="input" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label styleClass="input-label" text="Dni cliente" />
-                  <TextField fx:id="textFieldApellidos" promptText="11122233A" styleClass="input" />
+                  <TextField fx:id="textFieldDniCliente" promptText="11122233A" styleClass="input" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label styleClass="input-label" text="Dni Veterinario" />
-                  <TextField fx:id="textFieldApellidos1" promptText="11122233A" styleClass="input" />
+                  <TextField fx:id="textFieldDniVeterinario" promptText="12345678A" styleClass="input" />
                </children>
             </VBox>
             <VBox prefHeight="77.0" prefWidth="400.0">
                <children>
                   <Label styleClass="input-label" text="Chip Mascota" />
-                  <TextField fx:id="textFieldApellidos11" promptText="jkouo1k" styleClass="input" />
+                  <TextField fx:id="textFieldChipMascota" promptText="jkouo1k" styleClass="input" />
                </children>
             </VBox>
          </children>

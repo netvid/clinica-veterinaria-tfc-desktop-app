@@ -21,20 +21,29 @@ public class CitaRepositorio implements IDao<Cita,Long> {
 
     @Override
     public void create(Cita entity) {
+        String query = "INSERT INTO " + tableName + " (cita_fecha, cli_dni, vet_dni, masc_chip) values (" +
+                "'" + entity.getFecha() + "'"  + "," +
+                "'" + entity.getDniCliente() + "'" + "," +
+                "'" + entity.getDniVeterinario() + "'" + "," +
+                "'" + entity.getChipMascota() + "'" + ");";
+        System.out.println(query);
 
+        Conexion con = new Conexion();
+        con.ejecutarActualizacion(query);
+        con.close();
     }
 
     @Override
     public ObservableList<Cita> obtenerTodos(String busqueda) {
         ObservableList<Cita> citas = FXCollections.observableArrayList();
-        String query = !busqueda.equals("") ? String.format("SELECT * FROM %s where %s like '%%s%'",tableName,pkName,busqueda) : "SELECT * FROM " + tableName;
-
         Conexion con = new Conexion();
+
         try{
+            String query = !busqueda.equals("") ? String.format("SELECT * FROM %s WHERE %s = %d",tableName,pkName,Integer.valueOf(busqueda)) : "SELECT * FROM " + tableName;
             ResultSet rs = con.ejecutarConsulta(query);
             while(rs.next()){
                 Long id = rs.getLong("cita_id");
-                Date fecha = rs.getDate("cita_fecha");
+                String fecha = rs.getString("cita_fecha");
                 String dniCliente = rs.getString("cli_dni");
                 String dniVeterinario = rs.getString("vet_dni");
                 String chipMascota = rs.getString("masc_chip");
@@ -47,6 +56,8 @@ public class CitaRepositorio implements IDao<Cita,Long> {
             con.close();
         } catch (SQLException e) {
             this.alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
+        }catch(NumberFormatException e){
+            this.alertas.crearAlerta("Error en formato","El valor introducido debe ser un numero",Alert.AlertType.ERROR);
         }
 
         return citas;
@@ -54,11 +65,17 @@ public class CitaRepositorio implements IDao<Cita,Long> {
 
     @Override
     public void actualizar(Cita entity) {
-
+        String query = String.format("UPDATE %s SET cli_dni = '%s' , vet_dni = '%s', masc_chip = '%s' , cita_fecha = '%s' ",tableName,entity.getDniCliente(),entity.getDniVeterinario(),entity.getChipMascota(),entity.getFecha());
+        Conexion con = new Conexion();
+        con.ejecutarActualizacion(query);
+        con.close();
     }
 
     @Override
     public void borrar(Long id) {
-
+        String query = "DELETE FROM " + tableName + " where cita_id = " + id;
+        Conexion con = new Conexion();
+        con.ejecutarActualizacion(query);
+        con.close();
     }
 }

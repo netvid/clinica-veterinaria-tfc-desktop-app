@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Utiles {
@@ -38,6 +39,7 @@ public class Utiles {
                 break;
             default:
                 stage.show();
+                break;
         }
     }
 
@@ -48,5 +50,10 @@ public class Utiles {
 
     public LocalDate toLocalDate(Date date){
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public LocalDate toLocalDate(String time){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(time,formatter);
     }
 }

@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class ClienteControlador implements IClinica, Initializable {
 
+
     private ClienteRepositorio repositorio = new ClienteRepositorio();
 
     private Utiles utiles = new Utiles();
