@@ -54,7 +54,7 @@ public class ClienteRepositorio implements IDao<Cliente,String> {
 
     @Override
     public void actualizar(Cliente entity) {
-        String query = String.format("UPDATE %s SET cli_dni = '%s' , cli_nombre = '%s' , cli_apellidos = '%s' , cli_fecha_nac = '%s'",this.tableName,entity.getDni(),entity.getNombre(),entity.getFechaNac());
+        String query = String.format("UPDATE %s SET cli_dni = '%s' , cli_nombre = '%s' , cli_apellidos = '%s' , cli_fecha_nac = '%s' WHERE cli_dni = '%s'",tableName,entity.getDni(),entity.getNombre(),entity.getApellidos(),entity.getFechaNac(),entity.getDni());
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
         con.close();

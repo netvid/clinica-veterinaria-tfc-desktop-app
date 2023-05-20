@@ -14,7 +14,7 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button id="btn-home" mnemonicParsing="false" styleClass="left-panel__btn" textAlignment="CENTER">
+                        <Button id="btn-home" mnemonicParsing="false" onAction="#onClickHome" styleClass="left-panel__btn" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="25.0" top="25.0" />
                            </VBox.margin>
