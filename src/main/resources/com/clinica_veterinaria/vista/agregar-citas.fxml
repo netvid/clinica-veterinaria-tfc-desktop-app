@@ -31,7 +31,7 @@
             <VBox prefHeight="200.0" prefWidth="400.0">
                <children>
                   <Label styleClass="input-label" text="Fecha " />
-                  <DatePicker fx:id="datePickerFecha" prefHeight="25.0" prefWidth="412.0" promptText="yyyy-mm-dd" />
+                  <DatePicker fx:id="datePickerFecha" prefHeight="25.0" prefWidth="412.0" promptText="dd/mm/YYYY" />
                </children>
                <VBox.margin>
                   <Insets />

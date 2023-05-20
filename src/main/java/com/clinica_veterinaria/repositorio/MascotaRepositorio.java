@@ -61,13 +61,13 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
     }
 
     @Override
-    public void actualizar(Mascota entity) {
+    public void actualizar(Mascota entity, String chip) {
         String query = "UPDATE Mascotas " +
                 "SET masc_chip = " + "'" + entity.getChip() + "'" + "," +
                 "masc_nombre = " + "'" + entity.getNombre() + "'" + "," +
                 "masc_tipo =  " + "'" + entity.getTipo() + "'" + "," +
                 "masc_raza = " + "'" + entity.getRaza() + "'" + "," +
-                "cli_dni = " + "'" + entity.getDniCliente() + "'" + " where masc_chip = " +  "'" + entity.getChip() + "'";
+                "cli_dni = " + "'" + entity.getDniCliente() + "'" + " where masc_chip = " +  "'" + chip + "'";
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
         con.close();

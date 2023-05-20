@@ -6,22 +6,26 @@ import com.clinica_veterinaria.repositorio.CitaRepositorio;
 import com.clinica_veterinaria.utiles.MisAlertas;
 import com.clinica_veterinaria.utiles.Utiles;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-public class AgregarCitasControlador implements IClinicaForm<Cita> {
+public class AgregarCitasControlador implements IClinicaForm<Cita>{
     private String modo = "";
     private CitaRepositorio repositorio = new CitaRepositorio();
     private Utiles utiles = new Utiles();
     private MisAlertas alertas = new MisAlertas();
 
+    private Long idInicial = 1L;
 
     @FXML
     private DatePicker datePickerFecha;
@@ -38,11 +42,14 @@ public class AgregarCitasControlador implements IClinicaForm<Cita> {
     @FXML
     private TextField textFieldChipMascota;
 
+
     @FXML
     private Button btnAgregar;
 
     @FXML
     private Button btnCancelar;
+
+
 
     @FXML
     public void onClickAgregar(){
@@ -60,7 +67,7 @@ public class AgregarCitasControlador implements IClinicaForm<Cita> {
         Cita cita = new Cita(sFechaHora,dniCliente, dniVeterinario, chipMascota);
         switch(modo){
             case "editar":
-                this.repositorio.actualizar(cita);
+                this.repositorio.actualizar(cita,idInicial);
                 break;
             default:
                 this.repositorio.create(cita);
@@ -79,6 +86,7 @@ public class AgregarCitasControlador implements IClinicaForm<Cita> {
     public void iniciarAtributos(Cita entidad) {
         switch(modo){
             case "editar":
+                this.idInicial = entidad.getId();
                 this.textFieldDniCliente.setText(entidad.getDniCliente());
                 this.textFieldDniVeterinario.setText(entidad.getDniVeterinario());
                 this.textFieldChipMascota.setText(entidad.getChipMascota());
@@ -89,4 +97,6 @@ public class AgregarCitasControlador implements IClinicaForm<Cita> {
     public void setModo(String modo){
         this.modo = modo;
     }
+
+
 }

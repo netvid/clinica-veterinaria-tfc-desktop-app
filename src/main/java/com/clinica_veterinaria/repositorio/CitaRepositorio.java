@@ -64,7 +64,7 @@ public class CitaRepositorio implements IDao<Cita,Long> {
     }
 
     @Override
-    public void actualizar(Cita entity) {
+    public void actualizar(Cita entity, Long id) {
         String query = String.format("UPDATE %s SET cli_dni = '%s' , vet_dni = '%s', masc_chip = '%s' , cita_fecha = '%s' ",tableName,entity.getDniCliente(),entity.getDniVeterinario(),entity.getChipMascota(),entity.getFecha());
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);

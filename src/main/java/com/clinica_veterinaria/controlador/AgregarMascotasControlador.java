@@ -21,6 +21,8 @@ public class AgregarMascotasControlador implements Initializable, IClinicaForm<M
 
     private String tipos[] = new String[]{"Perro","Gato","Raton","Ardilla","Tortuga"};
 
+    private String chipInicial = "";
+
     @FXML
     private TextField textFieldChip;
 
@@ -43,6 +45,7 @@ public class AgregarMascotasControlador implements Initializable, IClinicaForm<M
     private Button btnCancelar;
 
 
+
     @FXML
     public void onClickCancelar(){
         this.utiles.cerrarVentanaPorBoton(btnCancelar);
@@ -61,7 +64,7 @@ public class AgregarMascotasControlador implements Initializable, IClinicaForm<M
 
         switch(modo){
             case "editar":
-                this.repositorio.actualizar(mascota);
+                this.repositorio.actualizar(mascota,chipInicial);
                 break;
             default:
                 this.repositorio.create(mascota);
@@ -75,6 +78,7 @@ public class AgregarMascotasControlador implements Initializable, IClinicaForm<M
     public void iniciarAtributos(Mascota mascota) {
         switch(modo){
             case "editar":
+                this.chipInicial = mascota.getChip();
                 this.textFieldChip.setText(mascota.getChip());
                 this.textFieldNombre.setText(mascota.getNombre());
                 this.choiceBoxTipo.setValue(mascota.getTipo());

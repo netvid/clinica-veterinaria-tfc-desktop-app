@@ -71,13 +71,13 @@ public class VeterinarioRepositorio implements IDao<Veterinario,String> {
         con.close();
     }
 
-    public void actualizar(Veterinario veterinario){
+    public void actualizar(Veterinario veterinario,String dni){
         String query = "UPDATE Veterinarios " +
                 "SET vet_dni = " + "'" + veterinario.getDni() + "'" + "," +
                 "vet_nombre = " + "'" + veterinario.getNombre() + "'" + "," +
                 "vet_apellidos =  " + "'" + veterinario.getApellidos() + "'" + "," +
                 "vet_fecha_nac = " + "'" + veterinario.getFechaNac() + "'" + "," +
-                "vet_sector = " + "'" + veterinario.getSector() + "'" + " where vet_dni = " +  "'" + veterinario.getDni() + "'";
+                "vet_sector = " + "'" + veterinario.getSector() + "'" + " where vet_dni = " +  "'" + dni + "'";
 
         Conexion con = new Conexion();
 
