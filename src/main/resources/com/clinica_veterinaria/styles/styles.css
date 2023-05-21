@@ -43,7 +43,13 @@
 
 #btn-veterinarios{
     -fx-background-image: url('../assets/veterinarian_icon.png');
+    -fx-background-size: 36px;
 }
+
+#btn-veterinarios:hover{
+    -fx-background-size: 38px;
+}
+
 
 
 /* ===================== RIGHT PANEL =====================*/

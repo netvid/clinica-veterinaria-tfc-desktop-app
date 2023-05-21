@@ -32,17 +32,17 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
+                        <Button id="btn-person" alignment="CENTER" mnemonicParsing="false" onAction="#onClickVerClientes" styleClass="left-panel__btn" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets bottom="25.0" top="25.0" />
+                           </VBox.margin>
+                        </Button>
                         <Button id="btn-veterinarios" mnemonicParsing="false" onAction="#onClickVerVeterinarios" styleClass="left-panel__btn">
                            <VBox.margin>
                               <Insets bottom="25.0" top="25.0" />
                            </VBox.margin>
                         </Button>
                         <Button id="btn-pets" mnemonicParsing="false" onAction="#onClickVerMascotas" styleClass="left-panel__btn" textAlignment="CENTER">
-                           <VBox.margin>
-                              <Insets bottom="25.0" top="25.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Button id="btn-person" alignment="CENTER" mnemonicParsing="false" onAction="#onClickVerClientes" styleClass="left-panel__btn" textAlignment="CENTER">
                            <VBox.margin>
                               <Insets bottom="25.0" top="25.0" />
                            </VBox.margin>
