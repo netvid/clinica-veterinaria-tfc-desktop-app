@@ -29,6 +29,8 @@ public class AgregarVeterinariosControlador implements Initializable, IClinicaFo
 
     private String modo = "";
 
+    private String dniInicial = "";
+
 
     @FXML
     TextField textFieldDni;
@@ -68,7 +70,7 @@ public class AgregarVeterinariosControlador implements Initializable, IClinicaFo
 
         switch(modo){
             case "editar":
-                repositorio.actualizar(veterinario);
+                repositorio.actualizar(veterinario,dniInicial);
                 break;
             default:
                 repositorio.create(veterinario);
@@ -90,6 +92,7 @@ public class AgregarVeterinariosControlador implements Initializable, IClinicaFo
     public void iniciarAtributos(Veterinario veterinario){
         switch(modo){
             case "editar":
+                this.dniInicial = veterinario.getDni();
                 this.textFieldDni.setText(veterinario.getDni());
                 this.textFieldNombre.setText(veterinario.getNombre());
                 this.textFieldApellidos.setText(veterinario.getApellidos());

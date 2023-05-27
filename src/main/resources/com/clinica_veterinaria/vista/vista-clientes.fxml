@@ -24,12 +24,12 @@
       <RowConstraints maxHeight="571.0" minHeight="10.0" prefHeight="571.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <TableView fx:id="tbVeterinarios" prefHeight="556.0" prefWidth="931.0" GridPane.rowIndex="2">
+      <TableView fx:id="tbClientes" prefHeight="556.0" prefWidth="931.0" GridPane.rowIndex="2">
          <columns>
             <TableColumn fx:id="colDni" prefWidth="187.0" text="Dni" />
             <TableColumn fx:id="colNombre" prefWidth="279.0" text="Nombre" />
             <TableColumn fx:id="colApellidos" prefWidth="269.0" text="Apellidos" />
-            <TableColumn fx:id="colFechaNac" prefWidth="398.0" text="Fecha Nacimiento" />
+            <TableColumn fx:id="colFechaNac" prefWidth="397.0" text="Fecha Nacimiento" />
          </columns>
          <GridPane.margin>
             <Insets top="15.0" />

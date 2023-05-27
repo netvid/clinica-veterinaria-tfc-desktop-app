@@ -3,6 +3,7 @@ package com.clinica_veterinaria.utiles;
 import com.clinica_veterinaria.MainApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Utiles {
@@ -23,7 +25,7 @@ public class Utiles {
         try {
             scene = new Scene(loader.load());
         } catch (IOException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
         }
 
         Stage stage = new Stage();
@@ -37,6 +39,7 @@ public class Utiles {
                 break;
             default:
                 stage.show();
+                break;
         }
     }
 
@@ -47,5 +50,10 @@ public class Utiles {
 
     public LocalDate toLocalDate(Date date){
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public LocalDate toLocalDate(String time){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return LocalDate.parse(time,formatter);
     }
 }

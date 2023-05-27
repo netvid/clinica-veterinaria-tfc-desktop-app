@@ -1,6 +1,7 @@
 package com.clinica_veterinaria.conexion;
 
 import com.clinica_veterinaria.utiles.MisAlertas;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 
@@ -22,7 +23,7 @@ public class Conexion {
             con.setAutoCommit(true);
             System.out.println("Conexion realizada con exito");
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
         }
     }
 
@@ -39,7 +40,7 @@ public class Conexion {
             statement = con.createStatement();
             rs = statement.executeQuery(query);
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(),Alert.AlertType.ERROR);
         }
 
         return rs;
@@ -53,7 +54,7 @@ public class Conexion {
             statement = con.createStatement();
             result = statement.executeUpdate(query) > 0;
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(),Alert.AlertType.ERROR);
         }
 
         return result;
@@ -63,7 +64,7 @@ public class Conexion {
         try {
             this.con.close();
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(),Alert.AlertType.ERROR);
         }
     }
 }

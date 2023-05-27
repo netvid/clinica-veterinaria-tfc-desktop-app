@@ -6,6 +6,7 @@ import com.clinica_veterinaria.modelo.Mascota;
 import com.clinica_veterinaria.utiles.MisAlertas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,20 +54,20 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
             rs.close();
             con.close();
         } catch (SQLException e) {
-            alertas.crearAlerta("Error",e.toString(),"error");
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
         }
 
         return mascotas;
     }
 
     @Override
-    public void actualizar(Mascota entity) {
+    public void actualizar(Mascota entity, String chip) {
         String query = "UPDATE Mascotas " +
                 "SET masc_chip = " + "'" + entity.getChip() + "'" + "," +
                 "masc_nombre = " + "'" + entity.getNombre() + "'" + "," +
                 "masc_tipo =  " + "'" + entity.getTipo() + "'" + "," +
                 "masc_raza = " + "'" + entity.getRaza() + "'" + "," +
-                "cli_dni = " + "'" + entity.getDniCliente() + "'" + " where masc_chip = " +  "'" + entity.getChip() + "'";
+                "cli_dni = " + "'" + entity.getDniCliente() + "'" + " where masc_chip = " +  "'" + chip + "'";
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
         con.close();
@@ -77,6 +78,7 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
         String query = "DELETE FROM Mascotas where masc_chip = '" + id + "'";
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
+        con.close();
     }
 
 
