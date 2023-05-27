@@ -1,13 +1,15 @@
 # clinica-veterinaria-tfc-desktop-app
-A Java FX Desktop application to manage the entities in a veterinarian clinic. 
+A desktop application made in Java FX for my final degree project.
 
 ## Preview 
 
-### Desktop 
-![Design](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/efb70c7c-d76f-47a4-b4ac-b54af0ebafc0)
+### Desktop app
 
-### Form
-![Form-design](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/c12596ce-2d5a-4ae4-87b6-f289d457b0e3)
+![desktop-design-2](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/b2c3b441-c2d5-494c-adae-b61913351037)
+
+### Form design
+
+![Form-design-3](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/351106e0-575e-476b-88f9-2f953db83bf8)
 
 
 ## Installation
@@ -21,3 +23,7 @@ git clone git@github.com:netvid/clinica-veterinaria-tfc-desktop-app.git
 The proyect uses by default postgres.
 
 To change the database url change the `Conexion` class and change the necessaries atributes to your environment.
+
+## License
+
+License under the CC BY-NC creative commons license.
