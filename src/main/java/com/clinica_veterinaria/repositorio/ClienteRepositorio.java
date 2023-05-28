@@ -11,6 +11,8 @@ import javafx.scene.control.Alert;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteRepositorio implements IDao<Cliente,String> {
     private String tableName = "clientes";
@@ -22,6 +24,24 @@ public class ClienteRepositorio implements IDao<Cliente,String> {
 
         Conexion con = new Conexion();
         con.ejecutarActualizacion(query);
+    }
+    public List<String> obtenerDniTodos(){
+        List<String> dnis = new ArrayList<>();
+
+        String query = "SELECT cli_dni from Clientes";
+        Conexion con = new Conexion();
+        try{
+            ResultSet rs = con.ejecutarConsulta(query);
+            while(rs.next()){
+                String dni = rs.getString("cli_dni");
+                dnis.add(dni);
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
+        }
+        return dnis;
     }
 
     @Override

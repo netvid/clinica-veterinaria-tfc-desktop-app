@@ -12,6 +12,8 @@ import javafx.scene.control.Alert;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VeterinarioRepositorio implements IDao<Veterinario,String> {
     private MisAlertas alertas = new MisAlertas();
@@ -61,6 +63,24 @@ public class VeterinarioRepositorio implements IDao<Veterinario,String> {
         con.ejecutarActualizacion(query);
         con.close();
 
+    }
+    public List<String> obtenerDniTodos(){
+        List<String> dnis = new ArrayList<>();
+
+        String query = "SELECT vet_dni from Veterinarios";
+        Conexion con = new Conexion();
+        try{
+            ResultSet rs = con.ejecutarConsulta(query);
+            while(rs.next()){
+                String dni = rs.getString("vet_dni");
+                dnis.add(dni);
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
+        }
+        return dnis;
     }
 
     public void borrar(String dni){

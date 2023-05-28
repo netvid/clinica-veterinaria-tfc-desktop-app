@@ -1,6 +1,14 @@
 # clinica-veterinaria-tfc-desktop-app
 A desktop application made in Java FX for my final degree project.
 
+## Some details
+
+If you have errors with control.fx add the following command in your vm-options
+
+```
+--add-exports javafx.base/com.sun.javafx.event=org.controlsfx.controls
+```
+
 ## Preview 
 
 ### Desktop app

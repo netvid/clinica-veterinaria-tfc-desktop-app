@@ -2,6 +2,7 @@ package com.clinica_veterinaria.controlador;
 
 import com.clinica_veterinaria.interfaces.IClinicaForm;
 import com.clinica_veterinaria.modelo.Mascota;
+import com.clinica_veterinaria.repositorio.ClienteRepositorio;
 import com.clinica_veterinaria.repositorio.MascotaRepositorio;
 import com.clinica_veterinaria.utiles.Utiles;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +18,7 @@ import java.util.ResourceBundle;
 public class AgregarMascotasControlador implements Initializable, IClinicaForm<Mascota> {
 
     private MascotaRepositorio repositorio = new MascotaRepositorio();
+    private ClienteRepositorio clienteRepositorio = new ClienteRepositorio();
     private Utiles utiles = new Utiles();
     private String modo = "";
 
@@ -88,9 +91,14 @@ public class AgregarMascotasControlador implements Initializable, IClinicaForm<M
         }
     }
 
+    public void agregarClientesTextField(){
+        TextFields.bindAutoCompletion(this.textFieldDniCliente, this.clienteRepositorio.obtenerDniTodos());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.choiceBoxTipo.getItems().addAll(tipos);
+        agregarClientesTextField();
     }
 
     public void setModo(String modo){

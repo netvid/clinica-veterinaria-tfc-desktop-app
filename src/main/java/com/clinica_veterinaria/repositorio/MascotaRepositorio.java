@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MascotaRepositorio implements IDao<Mascota,String> {
 
@@ -58,6 +60,25 @@ public class MascotaRepositorio implements IDao<Mascota,String> {
         }
 
         return mascotas;
+    }
+
+    public List<String> obtenerChipTodos(){
+        List<String> chips = new ArrayList<>();
+
+        String query = "SELECT masc_chip from mascotas";
+        Conexion con = new Conexion();
+        try{
+            ResultSet rs = con.ejecutarConsulta(query);
+            while(rs.next()){
+                String chip = rs.getString("masc_chip");
+                chips.add(chip);
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            alertas.crearAlerta("Error",e.toString(), Alert.AlertType.ERROR);
+        }
+        return chips;
     }
 
     @Override
