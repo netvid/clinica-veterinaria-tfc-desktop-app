@@ -5,11 +5,11 @@ A desktop application made in Java FX for my final degree project.
 
 ### Desktop app
 
-![desktop-design-2](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/b2c3b441-c2d5-494c-adae-b61913351037)
+![desktop-design-2](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/733c8287-9299-44e0-ba9e-69219eaf91ef)
 
 ### Form design
 
-![Form-design-3](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/351106e0-575e-476b-88f9-2f953db83bf8)
+![Form-design-3](https://github.com/netvid/clinica-veterinaria-tfc-desktop-app/assets/73761477/30bff176-5c51-4c80-bb01-b40bad3dcdd4)
 
 
 ## Installation
